@@ -3,7 +3,7 @@
     padding: .5em;
     display: block;
     --radius: .3em;
-    background: rgb(109, 59, 17);
+    background: darkgrey;
 }
 
 .health {
@@ -26,11 +26,11 @@
 
 .buttons{
     display: flex;
-    justify-content: space-around; 
-    border: 1px solid #000;
+    justify-content: space-around;
+    flex-grow: 2; 
     border-radius: var(--radius);
     padding: .5em;
-    background: rgb(238, 214, 135);
+    background: #e48827;
 }
 
 .buttons__attack{
@@ -42,9 +42,24 @@
     justify-content: center;
     font-size: 1.5em;
     font-weight: bold;
-    border: 1px solid rgb(83, 68, 26);
     border-radius: var(--radius);
     background: rgb(248, 236, 197) url('img/sword.png') no-repeat 90% center;
     cursor: pointer;
     user-select: none;
+}
+
+.bottom-panel{
+    display: flex;
+    flex-grow: 1; 
+}
+
+.life{
+    border-radius: var(--radius);
+    padding: .5em;
+    background: #77898c;
+    margin-left: 2em;
+}
+
+.life button{
+    margin-top: .5em;
 }
