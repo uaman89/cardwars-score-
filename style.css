@@ -10,7 +10,7 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    height: 4em;
+    height: 40vh;
     border: 1px solid #000;
     border-radius: var(--radius);
     overflow: hidden;
@@ -34,7 +34,7 @@
 }
 
 .buttons__attack{
-    --sideSize: 2em;
+    --sideSize: 3em;
     height: var(--sideSize);
     width: var(--sideSize);
     display: flex;
