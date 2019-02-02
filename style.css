@@ -1,0 +1,42 @@
+:root{
+    font-size: 16px;
+    padding: 1em;
+    display: block;
+}
+
+.health {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    height: 4em;
+    border: 1px solid #000;
+    background: rgb(173, 42, 24);
+    margin-bottom: 1em;
+}
+.health__bar {
+    width: 100%;
+    height: 100%;
+    background: rgb(84, 173, 24)
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between; 
+    border: 1px solid #000;
+    border-radius: 1em;
+    padding: .5em;
+}
+
+.buttons__attack{
+    --sideSize: 2em;
+    height: var(--sideSize);
+    width: var(--sideSize);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    border: 1px solid rgb(83, 68, 26);
+    border-radius: .5em;
+    background: rgb(238, 214, 135) url('img/sword.png') no-repeat 90% center;
+}
