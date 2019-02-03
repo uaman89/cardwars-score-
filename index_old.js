@@ -8,6 +8,7 @@ const fullLifeInput = document.querySelector('#fullLife');
 function updateLifeBar() {
     const currLifeWidth = lifeBar.clientWidth;
     lifeBar.style.width = `${playerLife / fullLife * 100}%`;
+    lifeBar.innerHTML = playerLife;
 }
 
 function attack(count) {

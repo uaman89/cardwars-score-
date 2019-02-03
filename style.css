@@ -1,27 +1,51 @@
 :root{
     font-size: 16px;
+    font-style:  Comic Sans MS, Arial;
     padding: .5em;
     display: block;
     --radius: .3em;
     background: darkgrey;
+    font-family: Comic Sans MS, Arial;
+}
+
+.app-player{
+    display: block;
+    height: 49vh;
+    margin-bottom: 1.5em;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.5);
 }
 
 .health {
     display: flex;
+    flex-shrink: 1;
     justify-content: flex-start;
     width: 100%;
-    height: 40vh;
+    height: 30vh;
     border: 1px solid #000;
     border-radius: var(--radius);
     overflow: hidden;
     background: rgb(173, 42, 24);
     margin-bottom: 1em;
+    position: relative;
+}
+.health__count {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 3em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px rgba(0,0,0,.5);
+    transform: translate(-50%, -50%); 
 }
 .health__bar {
     width: 100%;
     height: 100%;
     background: rgb(84, 173, 24);
     transition: width .3s;
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: #000;
 }
 
 .buttons{
@@ -34,7 +58,7 @@
 }
 
 .buttons__attack{
-    --sideSize: 3em;
+    --sideSize: 2.5em;
     height: var(--sideSize);
     width: var(--sideSize);
     display: flex;
@@ -58,6 +82,9 @@
     padding: .5em;
     background: #77898c;
     margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .life button{

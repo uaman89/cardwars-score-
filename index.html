@@ -7,28 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Score Holder</title>
     <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- production version, optimized for size and speed -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+
 </head>
 
 <body>
-    <div class="health">
-        <div class="health__bar"></div>
+    <div id="app">
+        <app-player></app-player>
+        <app-player></app-player>
     </div>
-    <div class="bottom-panel">
-        <div class="buttons">
-            <div class="buttons__attack">1</div>
-            <div class="buttons__attack">2</div>
-            <div class="buttons__attack">3</div>
-            <div class="buttons__attack">4</div>
-            <div class="buttons__attack">5</div>
-        </div>
-        <div class="life">
-            <form action="#" onsubmit="setFullLife()">
-                <input id="fullLife" type="text">
-            </form>
-            <button onclick="heal()">♥ 100%</button>
-        </div>
-    </div>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
