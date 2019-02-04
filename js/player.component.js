@@ -12,17 +12,14 @@ const PlayerComponent = {
                      class="buttons__button buttons__button--attack">
                      <img src="./img/sword.png" alt="attack icon">&nbsp;{{damage}}
                 </div>
-                <div class="buttons__button buttons__button--heal">♥ 1</div>
+                <div @click="heal(1)" class="buttons__button buttons__button--heal">♥ 1</div>
             </div>
             <div class="life">
                 <div>
-                    <form action="#" @submit.prevent="heal">
-                        <input v-model="healValue" type="text">
-                        <button type="submit"> ♥</button>
-                    </form>
+                    ♥♥♥: <input v-model="fullLife" type="text">
                 </div>
                 <div>
-                    max: <input v-model="fullLife" type="text">
+                    <button @click="heal(fullLife)"> ♥ 100%</button>
                 </div>
             </div>
         </div>
@@ -51,11 +48,14 @@ const PlayerComponent = {
     methods: {
         doDamage(damage) {
             console.log(this.playerLife, damage);
-            this.playerLife -= damage;
+            this.playerLife = +this.playerLife - damage;
+            if (this.playerLife < 0){
+                this.playerLife = 0;
+            }
             console.log(this.playerLife, damage);
         },
-        heal() {
-            this.playerLife = parseInt(this.healValue);
+        heal(value=0) {
+            this.playerLife = +this.playerLife + value;
             if (this.playerLife > this.fullLife) {
                 this.playerLife = this.fullLife;
             }
