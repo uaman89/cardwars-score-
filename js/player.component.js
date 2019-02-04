@@ -1,36 +1,66 @@
-Vue.component('app-player', {
+const PlayerComponent = {
     template: `
-    <div class="health">
-        <div class="health__bar"></div>
-        <div class="health__count"></div>
+    <div class="app-player">
+        <div class="health">
+            <div :style="{ width: lifePercent + '%'} " class="health__bar"></div>
+            <div class="health__count">{{playerLife}}</div>
+        </div>
+        <div class="bottom-panel">
+            <div class="buttons">
+                <div v-for="damage in attackValues"
+                     @click="doDamage(damage)"
+                     class="buttons__button buttons__button--attack">
+                     <img src="./img/sword.png" alt="attack icon">&nbsp;{{damage}}
+                </div>
+                <div class="buttons__button buttons__button--heal">♥ 1</div>
+            </div>
+            <div class="life">
+                <div>
+                    <form action="#" @submit.prevent="heal">
+                        <input v-model="healValue" type="text">
+                        <button type="submit"> ♥</button>
+                    </form>
+                </div>
+                <div>
+                    max: <input v-model="fullLife" type="text">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="bottom-panel">
-        <div class="buttons">
-            <div v-for="let damage in attackValues"
-                 @click="attack(damage)"
-                 class="buttons__attack">1</div>
-        </div>
-        <div class="life">
-            <form action="#" onsubmit="setFullLife()">
-                <input id="fullLife" type="text">
-            </form>
-            <button onclick="heal()">♥ 100%</button>
-        </div>
-    </div>  
     `,
-    data: () => {
+    data() {
         return {
-            attackValues: [1,2,3,4,5],
-            totalLife: 50,
-            playerLife: this.totalLife,
+            attackValues: [1, 2, 3, 4, 5],
+            fullLife: 50,
+            playerLife: 50,
+            healValue: 0,
+        }
+    },
+    watch: {
+        fullLife(newValue) {
+            if (this.playerLife > this.fullLife) {
+                this.playerLife = this.fullLife;
+            }
         }
     },
     computed: {
-        lifePercent: () => this.playerLife / this.fullLife * 100,
+        lifePercent() {
+            return this.playerLife / this.fullLife * 100
+        },
     },
-    maathods: {
-        doDamage(damage){
-           this.playerLife -= damage; 
+    methods: {
+        doDamage(damage) {
+            console.log(this.playerLife, damage);
+            this.playerLife -= damage;
+            console.log(this.playerLife, damage);
+        },
+        heal() {
+            this.playerLife = parseInt(this.healValue);
+            if (this.playerLife > this.fullLife) {
+                this.playerLife = this.fullLife;
+            }
         }
     }
-});
+};
+
+export { PlayerComponent };
