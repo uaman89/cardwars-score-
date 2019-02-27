@@ -1,13 +1,17 @@
 'use strict';
-import { PlayerComponent } from './player.component.js';
+import { PlayerComponent }   from './player.component.js';
+import { SettingsComponent } from './settings.component.js';
 
-const app = new Vue({
+new Vue({
     el: '#app',
     components: {
-        'app-player': PlayerComponent
+        'app-player': PlayerComponent,
+        'app-settings': SettingsComponent
     },
     data: {
-        message: 'Hello Vue!'
+        settings: {
+            maxLife: 50
+        }
     },
 
 });

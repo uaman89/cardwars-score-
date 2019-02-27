@@ -18,8 +18,9 @@
 
 <body>
     <div id="app">
-        <app-player></app-player>
-        <app-player></app-player>
+        <app-player :max-life="settings.maxLife"></app-player>
+        <app-player :max-life="settings.maxLife"></app-player>
+        <app-settings :settings="settings"></app-settings>
     </div>
     <script type="module" src="js/index.js"></script>
 </body>

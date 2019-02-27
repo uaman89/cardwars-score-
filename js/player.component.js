@@ -3,7 +3,7 @@ const PlayerComponent = {
     <div class="app-player">
         <div class="health">
             <div :style="{ width: lifePercent + '%'} " class="health__bar"></div>
-            <div class="health__count">{{playerLife}}</div>
+            <div class="health__count">{{playerLife === 0 ? 'Game over' : playerLife}}</div>
         </div>
         <div class="bottom-panel">
             <div class="buttons">
@@ -13,51 +13,45 @@ const PlayerComponent = {
                      <img src="./img/sword.png" alt="attack icon">&nbsp;{{damage}}
                 </div>
                 <div @click="heal(1)" class="buttons__button buttons__button--heal">♥ 1</div>
-            </div>
-            <div class="life">
-                <div>
-                    ♥♥♥: <input v-model="fullLife" type="text">
-                </div>
-                <div>
-                    <button @click="heal(fullLife)"> ♥ 100%</button>
-                </div>
+                <div @click="heal(maxLife)" class="buttons__button buttons__button--heal">♥100%</div>
             </div>
         </div>
     </div>
     `,
+    props: {
+        maxLife: Number
+    },
     data() {
         return {
             attackValues: [1, 2, 3, 4, 5],
-            fullLife: 50,
-            playerLife: 50,
+            playerLife: this.maxLife,
             healValue: 0,
         }
     },
     watch: {
-        fullLife(newValue) {
-            if (this.playerLife > this.fullLife) {
-                this.playerLife = this.fullLife;
+        maxLife(newValue) {
+            if (this.playerLife > this.maxLife) {
+                this.playerLife = this.maxLife;
             }
         }
     },
     computed: {
         lifePercent() {
-            return this.playerLife / this.fullLife * 100
+            console.log('this.maxLife', this.maxLife);
+            return this.playerLife / this.maxLife * 100
         },
     },
     methods: {
         doDamage(damage) {
-            console.log(this.playerLife, damage);
             this.playerLife = +this.playerLife - damage;
             if (this.playerLife < 0){
                 this.playerLife = 0;
             }
-            console.log(this.playerLife, damage);
         },
         heal(value=0) {
-            this.playerLife = +this.playerLife + value;
-            if (this.playerLife > this.fullLife) {
-                this.playerLife = this.fullLife;
+            this.playerLife = +this.playerLife + parseInt(value);
+            if (this.playerLife > this.maxLife) {
+                this.playerLife = this.maxLife;
             }
         }
     }
