@@ -5,16 +5,16 @@ const PlayerComponent = {
             <div :style="{ width: lifePercent + '%'} " class="health__bar"></div>
             <div class="health__count">{{playerLife === 0 ? 'Game over' : playerLife}}</div>
         </div>
-        <div class="bottom-panel">
-            <div class="buttons">
-                <div v-for="damage in attackValues"
-                     @click="doDamage(damage)"
-                     class="buttons__button buttons__button--attack">
-                     <img src="./img/sword.png" alt="attack icon">&nbsp;{{damage}}
-                </div>
-                <div @click="heal(1)" class="buttons__button buttons__button--heal">♥ 1</div>
-                <div @click="heal(maxLife)" class="buttons__button buttons__button--heal">♥100%</div>
+        <div class="buttons">
+            <!--<img class="icon" src="./img/sword.png" alt="attack icon">&nbsp;-->
+            <div v-for="damage in attackValues"
+                 @click="doDamage(damage)"
+                 class="buttons__button buttons__button--attack">
+                 {{damage}}
             </div>
+            <!--<span class="icon">♥</span> -->
+            <div @click="heal(1)" class="buttons__button buttons__button--heal">1</div>
+            <div @click="heal(maxLife)" class="buttons__button buttons__button--heal">100%</div>
         </div>
     </div>
     `,

@@ -1,14 +1,15 @@
 :root {
-    font-size: 16px;
-    font-family: Comic Sans MS, Arial;
-    display: block;
     --radius: .3em;
-    background: darkgrey;
+    --sideSize: 2.5em;
 }
 
 body {
     margin: 0;
     padding: 0;
+    font-size: 16px;
+    font-family: Comic Sans MS, Arial;
+    display: block;
+    background: #000e21;
 }
 
 #app {
@@ -22,10 +23,13 @@ body {
 
 .app-player {
     display: block;
-    max-height: 50vh;
+    /*max-height: 50vh;*/
     box-shadow: 0px 2px 5px rgba(0, 0, 0, .5);
     padding: .5em;
     padding-bottom: 1.5em;
+    /*background: url("img/wood.jpg");*/
+    /*background-size: contain;*/
+
 }
 
 .health {
@@ -33,7 +37,7 @@ body {
     flex-shrink: 1;
     justify-content: flex-start;
     width: 100%;
-    height: 25vh;
+    height: 6rem;
     border: 1px solid #000;
     border-radius: var(--radius);
     overflow: hidden;
@@ -46,7 +50,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    font-size: 3em;
+    font-size: 3rem;
     font-weight: bold;
     color: white;
     text-shadow: 1px 1px rgba(0, 0, 0, .5);
@@ -65,16 +69,17 @@ body {
 
 .buttons {
     display: flex;
-    justify-content: space-around;
-    flex-grow: 2;
-    border-radius: var(--radius);
-    padding: .5em;
-    background: #e48827;
+    margin: 0 auto;
+    width: fit-content;
+    flex-wrap: wrap;
+
+    padding: 1em;
+    border-radius: calc(var(--sideSize) / 2);
+    border: 2px outset #eee;
 }
 
-
 .buttons__button {
-    --sideSize: 2.5em;
+    color: white;
     height: var(--sideSize);
     width: var(--sideSize);
     display: flex;
@@ -83,13 +88,17 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     border-radius: calc(var(--sideSize) / 2);
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+    box-shadow: inset 3px 3px 7px rgba(255, 255, 255, .5), 1px 1px 1px rgba(0, 0, 0, .5);
     user-select: none;
     cursor: pointer;
 }
 
+.buttons__button:not(:last-child){
+    margin-right: .5rem;
+}
+
 .buttons__button--attack {
-    background: rgb(248, 236, 197); /* url('img/sword.png') no-repeat 20% center;*/
+    background: rgb(173, 42, 24);
 }
 
 .buttons__button--attack:active,
@@ -103,10 +112,6 @@ body {
     background: rgba(217, 226, 150, 0.5);
 }
 
-.bottom-panel {
-    display: flex;
-    flex-grow: 1;
-}
 
 .life {
     border-radius: var(--radius);
